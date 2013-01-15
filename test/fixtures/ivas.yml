@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: 9.99
+  penalty: 9.99
+  updated_part: 9.99
+
+two:
+  amount: 9.99
+  penalty: 9.99
+  updated_part: 9.99
