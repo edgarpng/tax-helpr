@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113052726) do
+ActiveRecord::Schema.define(:version => 20130116052102) do
 
   create_table "expenses", :force => true do |t|
     t.decimal  "amount"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20130113052726) do
   add_index "ivas", ["fiscal_month_id"], :name => "index_ivas_on_fiscal_month_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username"
+    t.string   "email"
     t.string   "password"
     t.string   "salt"
     t.datetime "created_at", :null => false

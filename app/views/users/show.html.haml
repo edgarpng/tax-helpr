@@ -1,0 +1,5 @@
+%p= @user.email
+= if flash[:notice]
+	%p= flash[:notice]
+%p
+	=button_to "Logout", session_path, :method => :delete
