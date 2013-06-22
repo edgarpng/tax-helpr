@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   	user = User.authenticate params[:email], params[:password]
   	if user
   		session[:user_id] = user.id
-      @fiscal_month = FiscalMonth.new
-  		redirect_to balance_path(:year => @fiscal_month.year, :month => @fiscal_month.month)
+      @fiscal_month = FiscalMonth.first || FiscalMonth.new
+  		redirect_to fiscal_month_path(@fiscal_month)
   	else
   		flash[:notice] = "Please enter valid information."
   		render 'new'

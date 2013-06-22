@@ -1,5 +1,10 @@
 class FiscalMonthsController < ApplicationController
   def show
-  	@month = FiscalMonth.find_by_year_and_month(params[:year], params[:month]) || FiscalMonth.new
+  	@fiscal_month = FiscalMonth.find_by_id(params[:id]) || FiscalMonth.new
+    @fiscal_month.id = params[:id]
+  end
+
+  def index
+    @fiscal_months = FiscalMonth.all
   end
 end

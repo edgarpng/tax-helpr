@@ -1,4 +1,8 @@
 The date is
-=@month.month
+=@fiscal_month.month
 ,
-=@month.year
+=@fiscal_month.year
+%br
+Your expenses this month are:
+= render @fiscal_month.expenses
+= link_to "New expense", new_fiscal_month_expense_path(@fiscal_month)

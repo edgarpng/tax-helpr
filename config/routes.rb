@@ -1,24 +1,20 @@
 TaxHelpr::Application.routes.draw do
   
-  root :to => 'users#new'
+  root :to => 'sessions#new'
 
-  #scope "balance/:year/:month" do
-    #match "" => "balances#show"
-    #resources :incomes, :except => [:put]
-    #resources :expenses, :except => [:put]
-  #end  
-
-  get "/balance/:year/:month" => "fiscal_months#show", :as => :balance do
-    resources :incomes, :except => [:put]
-    resources :expenses, :except => [:put]
+  scope ":year" do
+    scope ":month" do
+      resources :incomes, except: :put
+      resources :expenses, except: :put
+    end
   end
 
-  resource :session, :except => ['show', 'update', 'edit']
+  resources :users, path_names: { new: 'sign-up', edit: 'preferences' }, 
+  except: 'index', constraints: { id: /\d+/ }
 
-  match '/login', :to => 'sessions#new', :as => 'login', :via => :get
-  match '/logout', :to => 'sessions#destroy', :as => 'logout', :via => :post
+  resource :session, except: ['show', 'update', 'edit']
 
-  resources :users, :path_names => { :new => 'register', :edit => 'preferences' }, 
-  :except => 'index', :constraints => { :id => /\d+/ }
-
+  match '/login', to: 'sessions#new', as: 'login', via: :get
+  match '/logout', to: 'sessions#destroy', as: 'logout', via: :post
+  match '/users/sign-up', :to => 'users#new', as: 'sign_up', via: :get
 end
