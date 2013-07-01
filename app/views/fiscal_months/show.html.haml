@@ -4,5 +4,7 @@ The date is
 =@fiscal_month.year
 %br
 Your expenses this month are:
+%br
 = render @fiscal_month.expenses
-= link_to "New expense", new_fiscal_month_expense_path(@fiscal_month)
+%br
+= link_to "New expense", new_expense_path(year: @fiscal_month.year, month: @fiscal_month.month)

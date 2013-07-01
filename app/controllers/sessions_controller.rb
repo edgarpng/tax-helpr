@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
   def new
+    if session[:user_id]
+      @fiscal_month = FiscalMonth.new
+      redirect_to fiscal_month_path( year: @fiscal_month.year, month: @fiscal_month.month)
+    end
   end
 
   def create
@@ -7,7 +11,7 @@ class SessionsController < ApplicationController
   	if user
   		session[:user_id] = user.id
       @fiscal_month = FiscalMonth.first || FiscalMonth.new
-  		redirect_to fiscal_month_path(@fiscal_month)
+  		redirect_to fiscal_month_path( year: @fiscal_month.year, month: @fiscal_month.month)
   	else
   		flash[:notice] = "Please enter valid information."
   		render 'new'

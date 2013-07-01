@@ -9,6 +9,8 @@ TaxHelpr::Application.routes.draw do
     end
   end
 
+  match "/:year/:month", to: 'fiscal_months#show', via: :get, as: 'fiscal_month'
+
   resources :users, path_names: { new: 'sign-up', edit: 'preferences' }, 
   except: 'index', constraints: { id: /\d+/ }
 

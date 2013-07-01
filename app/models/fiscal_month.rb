@@ -17,4 +17,12 @@ class FiscalMonth < ActiveRecord::Base
   	self.month = Date.today.month
   	self.year = Date.today.year
   end
+
+  def self.by_year_and_month(year, month)
+    fiscal_month = FiscalMonth.find_by_year_and_month(year, month)
+    fiscal_month ||= FiscalMonth.new
+    fiscal_month.year = year
+    fiscal_month.month = month
+    return fiscal_month
+  end
 end
