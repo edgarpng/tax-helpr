@@ -40,6 +40,11 @@ gem 'protected_attributes'
 
 gem 'haml-rails', '>= 0.3.4'
 
+#Stuff for bootstrap
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

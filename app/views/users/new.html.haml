@@ -1,4 +1,4 @@
-%h1 Sign Up
+%h3 Sign Up
 
 =form_for @user do |f|
   =if @user.errors.any?
@@ -9,11 +9,8 @@
           %li= message
   %p
     =f.label :email
-    %br
     =f.text_field :email
-  %p
     =f.label :password
-    %br
     =f.password_field :password  
   .button
-    =f.submit
+    =f.submit "Sign Up", class: "btn btn-submit"

@@ -4,7 +4,11 @@ The date is
 =@fiscal_month.year
 %br
 Your expenses this month are:
+
+%br 
+
+%table.table.table-striped
+  =render(partial: "expenses/expense", layout: "expenses/table", collection: @fiscal_month.expenses) || "No expenses this month"
 %br
-= render @fiscal_month.expenses
-%br
-= link_to "New expense", new_expense_path(year: @fiscal_month.year, month: @fiscal_month.month)
+
+= link_to "New expense", new_expense_path(year: @fiscal_month.year, month: @fiscal_month.month), class: "btn"

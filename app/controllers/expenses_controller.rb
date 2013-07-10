@@ -19,11 +19,14 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(post_params)
     month = FiscalMonth.by_year_and_month(params[:year], params[:month])
-    logger.debug "THE MONTH'S MONTH IS #{month.month} and param is #{params[:month]}"
     @expense.fiscal_month = month
     month.expenses << @expense
+    user = User.find session[:user_id]
+    user.fiscal_months << month
+    month.user = user
     @expense.save
     month.save
+    user.save
     redirect_to fiscal_month_path(year: month.year, month: month.month)
   end
 
